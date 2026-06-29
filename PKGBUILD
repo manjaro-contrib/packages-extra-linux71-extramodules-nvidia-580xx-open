@@ -1,5 +1,5 @@
-# Maintainer: Bernhard Landauer <bernhard@manjaro.org>
 # Maintainer: Philip Müller <philm[at]manjaro[dot]org>
+# Contributor: Bernhard Landauer <bernhard@manjaro.org>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -8,7 +8,7 @@ _linuxprefix=linux71
 
 pkgname="${_linuxprefix}-nvidia-580xx-open"
 pkgver=580.173.02
-pkgrel=3
+pkgrel=5
 pkgdesc="NVIDIA open kernel modules for ${_linuxprefix}"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -17,7 +17,8 @@ groups=("${_linuxprefix}-extramodules")
 depends=("${_linuxprefix}" "nvidia-580xx-utils=${pkgver}" 'libglvnd')
 makedepends=("${_linuxprefix}-headers" "nvidia-580xx-open-dkms=$pkgver")
 provides=("nvidia=${pkgver}" 'NVIDIA-MODULE')
-conflicts=("${_linuxprefix}-nvidia-580xx")
+conflicts=("${_linuxprefix}-nvidia-580xx" "${_linuxprefix}-nvidia-570xx-open" "${_linuxprefix}-nvidia-575xx-open")
+replaces=("${_linuxprefix}-nvidia-570xx-open" "${_linuxprefix}-nvidia-575xx-open")
 options=('!strip' '!debug')
 
 build() {
